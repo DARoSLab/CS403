@@ -1,8 +1,8 @@
-function x = drawCoordinate2D(theta, p)
+function x = drawCoordinate2D(theta, p, scale)
 hold on
 
-quiver(p(1),p(2),cos(theta),sin(theta),0, 'linewidth',3, 'color','r', 'MaxHeadSize',0.6)
-quiver(p(1),p(2),-sin(theta),cos(theta),0, 'linewidth',3, 'color','b', 'MaxHeadSize',0.6)
+quiver(p(1),p(2),scale*cos(theta),scale*sin(theta),0, 'linewidth',2, 'color','r', 'MaxHeadSize',0.6)
+quiver(p(1),p(2),-scale*sin(theta),scale*cos(theta),0, 'linewidth',2, 'color','b', 'MaxHeadSize',0.6)
 
 hold off
 end

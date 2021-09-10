@@ -38,5 +38,4 @@ for i=1:100
     
     pause(.01);
     hold off
-
 end

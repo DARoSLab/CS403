@@ -19,8 +19,8 @@ drawLine2D(x2,x3);
 
 theta = pi/4;
 p = [3, 1];
-drawCoordinate2D(0,[0, 0]);
-drawCoordinate2D(theta,p);
+drawCoordinate2D(0,[0, 0], 0.5);
+drawCoordinate2D(theta,p, 0.5);
 
 xlabel('$x$','interpreter','latex','fontsize',20)
 ylabel('$y$','interpreter','latex','fontsize',20)
