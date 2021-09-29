@@ -5,15 +5,15 @@ clc
 addpath('./../matlab_utils')
 %%
 
-figure('position', [250, 300, 650, 550])
+figure('position', [350, 300, 650, 550])
 
 num_step = 30;
 for i = 1:num_step
     clf;
-    drawCoordinate3DScale(eye(3), zeros(3,1), 5.3);
-    th_z = pi/8/num_step*i; %pi/4;
-    th_y = pi/6; %pi/4;
-    th_x = pi/4;
+    drawCoordinate3DScale(eye(3), zeros(3,1), 0.3);
+    th_z = pi/4;
+    th_y = pi/4/num_step*i; %pi/4;
+
     R_z = [ cos(th_z), -sin(th_z), 0;
             sin(th_z), cos(th_z), 0;
             0, 0, 1];
@@ -21,14 +21,10 @@ for i = 1:num_step
             0, 1, 0;
             -sin(th_y), 0, cos(th_y)];
 
-    R_x = [1, 0, 0;
-           0, cos(th_x), -sin(th_x);
-           0, sin(th_x), cos(th_x)];
+    % implicit vs explicit
+    drawCoordinate3D(R_y*R_z, zeros(3,1)); % Rx explicit
+%     drawCoordinate3D(R_z*R_y, zeros(3,1)); % Rx implicit
 
-%     drawCoordinate3D(R_z*R_y*R_x, zeros(3,1)); % ZYX
-%     drawCoordinate3D(R_y*R_z*R_x, zeros(3,1)); % ZYX
-%     drawCoordinate3D(R_x*R_z*R_y, zeros(3,1)); % XZY
-    drawCoordinate3D(R_x*R_y*R_z, zeros(3,1)); % XYZ
 
     grid on
     axis equal
@@ -41,6 +37,6 @@ for i = 1:num_step
     ylabel('y', 'fontsize',22);
     zlabel('z', 'fontsize',22);
     
-    view(60, 40);
+    view(110, 40);
     pause(0.005);
 end
